@@ -1,5 +1,6 @@
 autoload -U colors && colors
-PS1="%{$fg[magenta]%}%~%{$fg[red]%} %{$reset_color%}$ "
+[[ $OSTYPE == "darwin"* ]] && PS1="%{$fg[magenta]%}%~%{$reset_color%} $ "
+[[ $OSTYPE == "linux"* ]] && PS1="%{$fg[cyan]%}%~%{$reset_color%} $ "
 
 bindkey -v
 
@@ -9,6 +10,13 @@ export MANPAGER='nvim +Man!'
 
 mkcd() {
   mkdir -p "$1" && cd "$1"
+}
+tmk() {
+  for sesh in "$@"; do
+    if tmux has-session -t "$sesh" 2>/dev/null; then
+      tmux kill-session -t "$sesh"
+    fi
+  done
 }
 
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
