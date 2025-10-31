@@ -14,5 +14,5 @@ mkcd() {
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+[[ $OSTYPE == "darwin"* ]] && source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ $OSTYPE == "linux"* ]] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
