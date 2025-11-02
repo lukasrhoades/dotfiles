@@ -21,6 +21,7 @@ tmk() {
 
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export PATH="/Applications/Racket v8.18/bin:$PATH"
 
 [[ $OSTYPE == "darwin"* ]] && source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ $OSTYPE == "linux"* ]] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

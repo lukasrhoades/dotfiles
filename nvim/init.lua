@@ -34,6 +34,7 @@ vim.pack.add({
   { src = "https://github.com/echasnovski/mini.pick" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/mason-org/mason.nvim" },
+  { src = "https://github.com/chomosuke/typst-preview.nvim" }
 })
 
 require "mason".setup()
@@ -43,8 +44,9 @@ require "oil".setup()
 map('n', '<leader>f', ":Pick files<CR>")
 map('n', '<leader>h', ":Pick help<CR>")
 map('n', '<leader>e', ":Oil<CR>")
+map('n', '<leader>p', ":LspTinymistExportPdf<CR>")
 
-vim.lsp.enable({ "lua_ls" })
+vim.lsp.enable({ "lua_ls", "tinymist" })
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -52,6 +54,11 @@ vim.lsp.config("lua_ls", {
         library = vim.api.nvim_get_runtime_file("", true),
       }
     }
+  }
+})
+vim.lsp.config("tinymist", {
+  settings = {
+    formatterMode = "typstyle"
   }
 })
 
