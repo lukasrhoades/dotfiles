@@ -8,6 +8,8 @@ export EDITOR='nvim'
 alias vim=nvim
 export MANPAGER='nvim +Man!'
 
+[[ $OSTYPE == "linux"* && -f ~/dotfiles/zsh/.zshrc_local ]] && source ~/dotfiles/zsh/.zshrc_local
+
 mkcd() {
   mkdir -p "$1" && cd "$1"
 }

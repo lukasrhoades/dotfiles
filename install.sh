@@ -5,7 +5,6 @@ declare -A files=(
   ["$DOTFILES/alacritty/alacritty.toml"]="$HOME/.config/alacritty/alacritty.toml"
   ["$DOTFILES/nvim/init.lua"]="$HOME/.config/nvim/init.lua"
   ["$DOTFILES/ripgrep/.ripgreprc"]="$HOME/.ripgreprc"
-  ["$DOTFILES/scripts/tmux-sessionizer.sh"]="$HOME/dotfiles/scripts/.tmux-sessionizer.sh"
   ["$DOTFILES/tmux/.tmux.conf"]="$HOME/.tmux.conf"
   ["$DOTFILES/zsh/.zshrc"]="$HOME/.zshrc"
 )
