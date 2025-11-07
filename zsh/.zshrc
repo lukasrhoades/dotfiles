@@ -4,9 +4,15 @@ autoload -U colors && colors
 
 bindkey -v
 
-export EDITOR='nvim'
+export EDITOR="nvim"
 alias vim=nvim
-export MANPAGER='nvim +Man!'
+export MANPAGER="nvim +Man!"
+
+alias ls="ls -lah"
+alias mv="mv -i"
+alias rm="rm -I"
+alias cp="cp -i"
+alias mkdir="mkdir -p"
 
 [[ $OSTYPE == "linux"* && -f ~/dotfiles/zsh/.zshrc_local ]] && source ~/dotfiles/zsh/.zshrc_local
 
@@ -18,6 +24,18 @@ tmk() {
     if tmux has-session -t "$sesh" 2>/dev/null; then
       tmux kill-session -t "$sesh"
     fi
+  done
+}
+buntoo() {
+  if [[ $(utmctl status buntoo) == "stopped" ]]; then
+    utmctl start buntoo
+  fi
+  for i in {1..10}; do
+    if [[ $(utmctl status buntoo) == "started" ]]; then
+      ssh buntoo
+      return
+    fi
+    sleep 2
   done
 }
 

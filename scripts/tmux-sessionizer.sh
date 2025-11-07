@@ -21,7 +21,15 @@ selected_name=$(basename "$selected" | tr . _)
 
 if ! tmux has-session -t "$selected_name"; then
   tmux new-session -ds "$selected_name" -c "$selected"
-  tmux select-window -t "$selected_name:1"
+fi
+
+session_name=$(tmux display-message -p "#S")
+if [[ $session_name =~ ^[[:digit:]]+$ ]]; then
+  tmp_session=true
 fi
 
 tmux switch-client -t "$selected_name"
+
+if [[ $tmp_session = true && $(tmux list-clients -t $session_name | wc -l) -eq 0 ]]; then
+  tmux kill-session -t "$session_name"
+fi
