@@ -38,6 +38,12 @@ buntoo() {
     sleep 2
   done
 }
+xutm() {
+  utm_pid=$(pgrep UTM)
+  if [[ -n $utm_pid ]]; then
+    kill $utm_pid;
+  fi
+}
 
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
